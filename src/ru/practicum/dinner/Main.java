@@ -3,12 +3,10 @@ package ru.practicum.dinner;
 import java.util.Scanner;
 
 public class Main {
-
-    static DinnerConstructor dc;
+    static DinnerConstructor dinnerConstructor;
     static Scanner scanner;
-
     public static void main(String[] args) {
-        dc = new DinnerConstructor();
+        dinnerConstructor = new DinnerConstructor();
         scanner = new Scanner(System.in);
 
         while (true) {
@@ -16,14 +14,11 @@ public class Main {
             String command = scanner.nextLine();
 
             switch (command) {
-                case "1":
-                    addNewDish();
-                    break;
-                case "2":
-                    generateDishCombo();
-                    break;
-                case "3":
+                case "1" -> addNewDish();
+                case "2" -> generateDishCombo();
+                case "3" -> {
                     return;
+                }
             }
         }
     }
@@ -40,7 +35,7 @@ public class Main {
         String dishType = scanner.nextLine();
         System.out.println("Введите название блюда:");
         String dishName = scanner.nextLine();
-
+        DinnerConstructor.addNewDish(dishType, dishName);
         // добавьте новое блюдо
     }
 
