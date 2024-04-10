@@ -33,14 +33,14 @@ public class DinnerConstructor {
     }
 
     void generateDishCombo(int numberOfCombos) {    // генерация комбо
-        for (int k = 0; k < numberOfCombos; k++) {
+        for (int i = 0; i < numberOfCombos; i++) {
             ArrayList<String> comboItems = new ArrayList<>();   // список комбо вариантов
-            for (int i = 0; i < items.size(); i++) {
-                ArrayList<String> dishNames = dishTypes.get(items.get(i));
+            for (int k = 0; k < items.size(); k++) {
+                ArrayList<String> dishNames = dishTypes.get(items.get(k));
                 int index = random.nextInt(dishNames.size());
                 comboItems.add(dishNames.get(index));
             }
-            System.out.println("Комбо " + (k + 1) + "\n" + comboItems);
+            System.out.println("Комбо " + (i + 1) + "\n" + comboItems);
         }
     }
 }

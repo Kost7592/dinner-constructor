@@ -36,7 +36,6 @@ public class Main {
         System.out.println("Введите название блюда:");
         String dishName = scanner.nextLine();
         dinnerConstructor.addNewDish(dishType, dishName);
-        // добавьте новое блюдо
     }
 
     private static void generateDishCombo() {
