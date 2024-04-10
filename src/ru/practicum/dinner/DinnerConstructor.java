@@ -9,18 +9,22 @@ public class DinnerConstructor {
     ArrayList<String> items = new ArrayList<>();
     Random random = new Random();
 
-    void addNewDish(String dishType, String dishName) {
-        if (dishTypes.containsKey(dishType)) {
+    void addNewDish(String dishType, String dishName) {    //добавление нового блюда в хеш-таблицу
+        if (dishTypes.containsKey(dishType)) {    //вариант, когда тип блюда уже есть в таблице
             ArrayList<String> dishNames = dishTypes.get(dishType);
-            dishNames.add(dishName);
-        } else {
+            if (dishNames.contains(dishName)) {    //защита от дублирования записей блюд в одном типе
+                System.out.println("Блюдо уже имеется в этом типе, введите другое блюдо");
+            } else {
+                dishNames.add(dishName);
+            }
+        } else {    //вариант, когда тип блюда еще отсутствует в таблице
             ArrayList<String> dishNames = new ArrayList<>();
             dishNames.add(dishName);
             dishTypes.put(dishType,dishNames);
         }
     }
 
-    void getListOfItems(String nextItem) {
+    void getListOfItems(String nextItem) {    // получение списка типов блюд для генерации комбо
         if (dishTypes.containsKey(nextItem)) {
             items.add(nextItem);
         } else {
@@ -28,18 +32,15 @@ public class DinnerConstructor {
         }
     }
 
-    void generateDishCombo(int numberOfCombos) {
-        HashMap<String, ArrayList<String>> combos = new HashMap<>();
-
+    void generateDishCombo(int numberOfCombos) {    // генерация комбо
         for (int k = 0; k < numberOfCombos; k++) {
-            ArrayList<String> comboItems = new ArrayList<>();
+            ArrayList<String> comboItems = new ArrayList<>();   // список комбо вариантов
             for (int i = 0; i < items.size(); i++) {
-            ArrayList<String> dishNames = dishTypes.get(items.get(i)); /* достаем из хеш-таблицы список блюд под первым набранным типом блюд */
-            int index = random.nextInt(dishNames.size()); //выбираем случайую запись из списка
-            comboItems.add(dishNames.get(index)); // включаем случайную запись в новый список
+                ArrayList<String> dishNames = dishTypes.get(items.get(i));
+                int index = random.nextInt(dishNames.size());
+                comboItems.add(dishNames.get(index));
             }
-            System.out.println("Комбо " + (k + 1) + comboItems);
+            System.out.println("Комбо " + (k + 1) + "\n" + comboItems);
         }
-
     }
 }
