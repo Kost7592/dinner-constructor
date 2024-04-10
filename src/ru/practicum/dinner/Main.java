@@ -1,7 +1,5 @@
 package ru.practicum.dinner;
 
-import java.util.HashMap;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
